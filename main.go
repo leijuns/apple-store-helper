@@ -27,124 +27,46 @@ var tip *widget.Label
 var status *widget.Label
 var versionWgt *widget.Hyperlink
 var modelCode = map[string]string{
-	"iphone12mini": "H",
-	"iphone12": "F",
-	"iphone12pro": "A",
-	"iphone12promax": "G",
+	"iphone13mini": "H",
+	"iphone13": "F",
+	"iphone13pro": "A",
+	"iphone13promax": "G",
 }
 
 var models = map[string][]string{
 	"CN/zh_CN": {
-		"iphone12mini 64gb 黑色-MG7Y3CH/A",
-		"iphone12mini 64gb 白色-MG803CH/A",
-		"iphone12mini 64gb 蓝色-MG823CH/A",
-		"iphone12mini 64gb 绿色-MG833CH/A",
-		"iphone12mini 64gb 红色-MG813CH/A",
-		"iphone12mini 128gb 黑色-MG843CH/A",
-		"iphone12mini 128gb 白色-MG853CH/A",
-		"iphone12mini 128gb 蓝色-MG873CH/A",
-		"iphone12mini 128gb 绿色-MG883CH/A",
-		"iphone12mini 128gb 红色-MG863CH/A",
-		"iphone12mini 256gb 黑色-MG893CH/A",
-		"iphone12mini 256gb 白色-MG8A3CH/A",
-		"iphone12mini 256gb 蓝色-MG8D3CH/A",
-		"iphone12mini 256gb 绿色-MG8E3CH/A",
-		"iphone12mini 256gb 红色-MG8C3CH/A",
-		"iphone12 64gb 黑色-MGGM3CH/A",
-		"iphone12 64gb 白色-MGGN3CH/A",
-		"iphone12 64gb 蓝色-MGGQ3CH/A",
-		"iphone12 64gb 绿色-MGGT3CH/A",
-		"iphone12 64gb 红色-MGGP3CH/A",
-		"iphone12 128gb 黑色-MGGU3CH/A",
-		"iphone12 128gb 白色-MGGV3CH/A",
-		"iphone12 128gb 蓝色-MGGX3CH/A",
-		"iphone12 128gb 绿色-MGGY3CH/A",
-		"iphone12 128gb 红色-MGGW3CH/A",
-		"iphone12 256gb 黑色-MGH13CH/A",
-		"iphone12 256gb 白色-MGH23CH/A",
-		"iphone12 256gb 蓝色-MGH43CH/A",
-		"iphone12 256gb 绿色-MGH53CH/A",
-		"iphone12 256gb 红色-MGH33CH/A",
-		"iphone12pro 128gb 石墨色-MGL93CH/A",
-		"iphone12pro 128gb 银色-MGLA3CH/A",
-		"iphone12pro 128gb 金色-MGLC3CH/A",
-		"iphone12pro 128gb 海蓝色-MGLD3CH/A",
-		"iphone12pro 256gb 石墨色-MGLE3CH/A",
-		"iphone12pro 256gb 银色-MGLF3CH/A",
-		"iphone12pro 256gb 金色-MGLG3CH/A",
-		"iphone12pro 256gb 海蓝色-MGLH3CH/A",
-		"iphone12pro 512gb 石墨色-MGLJ3CH/A",
-		"iphone12pro 512gb 银色-MGLK3CH/A",
-		"iphone12pro 512gb 金色-MGLL3CH/A",
-		"iphone12pro 512gb 海蓝色-MGLM3CH/A",
-		"iphone12promax 128gb 石墨色-MGC03CH/A",
-		"iphone12promax 128gb 银色-MGC13CH/A",
-		"iphone12promax 128gb 金色-MGC23CH/A",
-		"iphone12promax 128gb 海蓝色-MGC33CH/A",
-		"iphone12promax 256gb 石墨色-MGC43CH/A",
-		"iphone12promax 256gb 银色-MGC53CH/A",
-		"iphone12promax 256gb 金色-MGC63CH/A",
-		"iphone12promax 256gb 海蓝色-MGC73CH/A",
-		"iphone12promax 512gb 石墨色-MGC93CH/A",
-		"iphone12promax 512gb 银色-MGCA3CH/A",
-		"iphone12promax 512gb 金色-MGCC3CH/A",
-		"iphone12promax 512gb 海蓝色-MGCE3CH/A",
-	},
-	"MO/zh_MO": {
-		"iphone12mini 64gb 黑色-MG7Y3ZA/A",
-		"iphone12mini 64gb 白色-MG803ZA/A",
-		"iphone12mini 64gb 藍色-MG823ZA/A",
-		"iphone12mini 64gb 綠色-MG833ZA/A",
-		"iphone12mini 64gb (PRODUCT)RED-MG813ZA/A",
-		"iphone12mini 128gb 黑色-MG843ZA/A",
-		"iphone12mini 128gb 白色-MG853ZA/A",
-		"iphone12mini 128gb 藍色-MG873ZA/A",
-		"iphone12mini 128gb 綠色-MG883ZA/A",
-		"iphone12mini 128gb (PRODUCT)RED-MG863ZA/A",
-		"iphone12mini 256gb 黑色-MG893ZA/A",
-		"iphone12mini 256gb 白色-MG8A3ZA/A",
-		"iphone12mini 256gb 藍色-MG8D3ZA/A",
-		"iphone12mini 256gb 綠色-MG8E3ZA/A",
-		"iphone12mini 256gb (PRODUCT)RED-MG8C3ZA/A",
-		"iphone12 64gb 黑色-MGGM3ZA/A",
-		"iphone12 64gb 白色-MGGN3ZA/A",
-		"iphone12 64gb 藍色-MGGQ3ZA/A",
-		"iphone12 64gb 綠色-MGGT3ZA/A",
-		"iphone12 64gb (PRODUCT)RED-MGGP3ZA/A",
-		"iphone12 128gb 黑色-MGGU3ZA/A",
-		"iphone12 128gb 白色-MGGV3ZA/A",
-		"iphone12 128gb 藍色-MGGX3ZA/A",
-		"iphone12 128gb 綠色-MGGY3ZA/A",
-		"iphone12 128gb (PRODUCT)RED-MGGW3ZA/A",
-		"iphone12 256gb 黑色-MGH13ZA/A",
-		"iphone12 256gb 白色-MGH23ZA/A",
-		"iphone12 256gb 藍色-MGH43ZA/A",
-		"iphone12 256gb 綠色-MGH53ZA/A",
-		"iphone12 256gb (PRODUCT)RED-MGH33ZA/A",
-		"iphone12pro 128gb 石墨色-MGL93ZA/A",
-		"iphone12pro 128gb 銀色-MGLA3ZA/A",
-		"iphone12pro 128gb 金色-MGLC3ZA/A",
-		"iphone12pro 128gb 太平洋藍色-MGLD3ZA/A",
-		"iphone12pro 256gb 石墨色-MGLE3ZA/A",
-		"iphone12pro 256gb 銀色-MGLF3ZA/A",
-		"iphone12pro 256gb 金色-MGLG3ZA/A",
-		"iphone12pro 256gb 太平洋藍色-MGLH3ZA/A",
-		"iphone12pro 512gb 石墨色-MGLJ3ZA/A",
-		"iphone12pro 512gb 銀色-MGLK3ZA/A",
-		"iphone12pro 512gb 金色-MGLL3ZA/A",
-		"iphone12pro 512gb 太平洋藍色-MGLM3ZA/A",
-		"iphone12promax 128gb 石墨色-MGC03ZA/A",
-		"iphone12promax 128gb 銀色-MGC13ZA/A",
-		"iphone12promax 128gb 金色-MGC23ZA/A",
-		"iphone12promax 128gb 太平洋藍色-MGC33ZA/A",
-		"iphone12promax 256gb 石墨色-MGC43ZA/A",
-		"iphone12promax 256gb 銀色-MGC53ZA/A",
-		"iphone12promax 256gb 金色-MGC63ZA/A",
-		"iphone12promax 256gb 太平洋藍色-MGC73ZA/A",
-		"iphone12promax 512gb 石墨色-MGC93ZA/A",
-		"iphone12promax 512gb 銀色-MGCA3ZA/A",
-		"iphone12promax 512gb 金色-MGCC3ZA/A",
-		"iphone12promax 512gb 太平洋藍色-MGCE3ZA/A",
+		"iPhone 13 Pro 512GB 远峰蓝色-MLTJ3CH/A",
+		"iPhone 13 Pro 256GB 金色-MLTD3CH/A",
+		"iPhone 13 Pro 1TB 银色-MLTL3CH/A",
+		"iPhone 13 Pro 128GB 远峰蓝色-MLT83CH/A",
+		"iPhone 13 Pro 128GB 银色-MLT63CH/A",
+		"iPhone 13 Pro 512GB 石墨色-MLTF3CH/A",
+		"iPhone 13 Pro 256GB 石墨色-MLT93CH/A",
+		"iPhone 13 Pro 256GB 远峰蓝色-MLTE3CH/A",
+		"iPhone 13 Pro 128GB 金色-MLT73CH/A",
+		"iPhone 13 Pro 128GB 石墨色-MLT53CH/A",
+		"iPhone 13 Pro 1TB 金色-MLTM3CH/A",
+		"iPhone 13 Pro 512GB 银色-MLTG3CH/A",
+		"iPhone 13 Pro 1TB 远峰蓝色-MLTN3CH/A",
+		"iPhone 13 Pro 1TB 石墨色-MLTK3CH/A",
+		"iPhone 13 Pro 512GB 金色-MLTH3CH/A",
+		"iPhone 13 Pro 256GB 银色-MLTC3CH/A",
+		"iPhone 13 Pro Max 1TB 金色-MLHK3CH/A",
+		"iPhone 13 Pro Max 128GB 金色-MLH63CH/A",
+		"iPhone 13 Pro Max 128GB 远峰蓝色-MLH73CH/A",
+		"iPhone 13 Pro Max 128GB 银色-MLH53CH/A",
+		"iPhone 13 Pro Max 512GB 金色-MLHF3CH/A",
+		"iPhone 13 Pro Max 512GB 远峰蓝色-MLHG3CH/A",
+		"iPhone 13 Pro Max 1TB 石墨色-MLHH3CH/A",
+		"iPhone 13 Pro Max 512GB 银色-MLHE3CH/A",
+		"iPhone 13 Pro Max 1TB 远峰蓝色-MLHL3CH/A",
+		"iPhone 13 Pro Max 256GB 银色-MLH93CH/A",
+		"iPhone 13 Pro Max 1TB 银色-MLHJ3CH/A",
+		"iPhone 13 Pro Max 256GB 远峰蓝色-MLHC3CH/A",
+		"iPhone 13 Pro Max 256GB 石墨色-MLH83CH/A",
+		"iPhone 13 Pro Max 128GB 石墨色-MLH43CH/A",
+		"iPhone 13 Pro Max 256GB 金色-MLHA3CH/A",
+		"iPhone 13 Pro Max 512GB 石墨色-MLHD3CH/A",
 	},
 }
 var selectQuantity = "1" // 默认一台
@@ -162,7 +84,7 @@ func main() {
 	a := app.NewWithID("ip12")
 	// 打包时自动加载字体
 	a.Settings().SetTheme(&myTheme{})
-	w = a.NewWindow("iPhone12|Mini|Pro|ProMax")
+	w = a.NewWindow("iPhone13|Mini|Pro|ProMax")
 	w.Resize(fyne.NewSize(800, 600))
 
 	body = widget.NewLabel("")
@@ -184,7 +106,7 @@ func main() {
 		selectModel = b
 	})
 	// 地区选择组件
-	areaWgt := widget.NewSelect([]string{"中国大陆", "中国澳门"}, func(b string) {
+	areaWgt := widget.NewSelect([]string{"中国大陆"}, func(b string) {
 		area = "CN/zh_CN"
 
 		if b == "中国澳门" {
@@ -266,17 +188,17 @@ func main() {
 				isListen = false
 				status.SetText("暂停")
 			}),
-			widget.NewButton("12mini注册码", func() {
-				go registerCode("iphone12mini")
+			widget.NewButton("13mini注册码", func() {
+				go registerCode("iphone13mini")
 			}),
-			widget.NewButton("12注册码", func() {
-				go registerCode("iphone12")
+			widget.NewButton("13注册码", func() {
+				go registerCode("iphone13")
 			}),
-			widget.NewButton("12Pro注册码", func() {
-				go registerCode("iphone12pro")
+			widget.NewButton("13Pro注册码", func() {
+				go registerCode("iphone13pro")
 			}),
 			widget.NewButton("ProMax注册码", func() {
-				go registerCode("iphone12promax")
+				go registerCode("iphone13promax")
 			}),
 			widget.NewButton("退出", func() {
 				a.Quit()
